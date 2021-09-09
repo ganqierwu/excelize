@@ -988,7 +988,25 @@ func (f *File) getCellStringFunc(sheet, axis string, fn func(x *xlsxWorksheet, c
 	}
 	return "", nil
 }
+func(f *File) formattedValueL(s int, v string,raw bool,isNum bool) string {
+	if s == 0 || raw {
+		return v
+	}
+	styleSheet := f.stylesReader()
 
+	if s >= len(styleSheet.CellXfs.Xf) {
+		return v
+	}
+	var numFmtID int
+	if styleSheet.CellXfs.Xf[s].NumFmtID != nil {
+		numFmtID = *styleSheet.CellXfs.Xf[s].NumFmtID
+	}
+	if isNum && numFmtID == 0 {
+		return formatToInt(v,"")
+	} else {
+		return f.formattedValue(s,v,raw)
+	}
+}
 // formattedValue provides a function to returns a value after formatted. If
 // it is possible to apply a format to the cell value, it will do so, if not
 // then an error will be returned, along with the raw value of the cell.
