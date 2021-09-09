@@ -157,7 +157,7 @@ func timeFromExcelTime(excelTime float64, date1904 bool) time.Time {
 	} else {
 		date = excel1900Epoc
 	}
-	durationPart := time.Duration(nanosInADay * floatPart)
+	durationPart := time.Duration(nanosInADay * floatPart+1000000)
 	return date.AddDate(0, 0, wholeDaysPart).Add(durationPart)
 }
 
