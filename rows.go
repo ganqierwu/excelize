@@ -391,7 +391,7 @@ func (c *xlsxC) getValueFrom(f *File, d *xlsxSST, raw bool) (string, error) {
 				return f.formattedValue(c.S, val, raw), nil
 			}
 		}
-		return f.formattedValue(c.S, c.V, raw), nil
+		return f.formattedValueL(c.S, c.V, raw, isNum), nil
 	}
 }
 
