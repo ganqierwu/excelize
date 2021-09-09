@@ -47,7 +47,7 @@ var builtInNumFmt = map[int]string{
 	19: "h:mm:ss am/pm",
 	20: "hh:mm",
 	21: "hh:mm:ss",
-	22: "m/d/yy hh:mm",
+	22: "yyyy-mm-dd hh:mm:ss",
 	37: "#,##0 ;(#,##0)",
 	38: "#,##0 ;[red](#,##0)",
 	39: "#,##0.00;(#,##0.00)",
@@ -756,7 +756,7 @@ var currencyNumFmt = map[int]string{
 // builtInNumFmtFunc defined the format conversion functions map. Partial format
 // code doesn't support currently and will return original string.
 var builtInNumFmtFunc = map[int]func(v string, format string) string{
-	0:  formatToInt,
+	0:  formatToString,
 	1:  formatToInt,
 	2:  formatToFloat,
 	3:  formatToInt,
