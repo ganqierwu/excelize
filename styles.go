@@ -756,7 +756,7 @@ var currencyNumFmt = map[int]string{
 // builtInNumFmtFunc defined the format conversion functions map. Partial format
 // code doesn't support currently and will return original string.
 var builtInNumFmtFunc = map[int]func(v string, format string) string{
-	0:  formatToString,
+	0:  formatToInt,
 	1:  formatToInt,
 	2:  formatToFloat,
 	3:  formatToInt,
